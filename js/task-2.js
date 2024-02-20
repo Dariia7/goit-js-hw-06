@@ -13,10 +13,14 @@ class Storage {
      this.#items.push(newItem)
 
     }   
-    removeItem(itemToRemove) {
-        const index = this.#items.indexOf(itemToRemove);
-        this.#items.splice(index, 1);
-    }  
+   removeItem(itemToRemove) {
+  const index = this.#items.indexOf(itemToRemove);
+  if (index === -1) {
+    console.log(`Елемент "${itemToRemove}" не знайдено`);
+    return;
+  }
+  this.#items.splice(index, 1);
+} 
    
 }
 
@@ -26,3 +30,4 @@ storage.addItem("Droid");
 console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
 storage.removeItem("Prolonger");
 console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
